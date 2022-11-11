@@ -22,13 +22,12 @@ const Home: NextPage = () => {
   const connectWithMetamask = useMetamask();
 
   // Contract Hooks
-  const tokenContract = useContract(tokenContractAddress);
-  const erc20 = getErc20(tokenContract.contract)
+  const { contract: tokenContract } = useContract(tokenContractAddress);
 
   const { contract, isLoading } = useContract(stakingContractAddress);
 
   // Load Balance of Token
-  const { data: tokenBalance } = useTokenBalance(erc20, address);
+  const { data: tokenBalance } = useTokenBalance(tokenContract, address);
 
   ///////////////////////////////////////////////////////////////////////////
   // Custom contract functions
